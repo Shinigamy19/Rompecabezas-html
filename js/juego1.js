@@ -118,10 +118,88 @@ function capturarTeclas(){
   })
 }
 
+function moverEnDireccionTactil(direccion) {
+  var nuevaFilaPiezaVacia;
+  var nuevaColumnaPiezaVacia;
+
+  switch (direccion) {
+    case 'abajo':
+      nuevaFilaPiezaVacia = posicionVacia.fila + 1;
+      nuevaColumnaPiezaVacia = posicionVacia.columna;
+      break;
+    case 'arriba':
+      nuevaFilaPiezaVacia = posicionVacia.fila - 1;
+      nuevaColumnaPiezaVacia = posicionVacia.columna;
+      break;
+    case 'izquierda':
+      nuevaColumnaPiezaVacia = posicionVacia.columna - 1;
+      nuevaFilaPiezaVacia = posicionVacia.fila;
+      break;
+    case 'derecha':
+      nuevaColumnaPiezaVacia = posicionVacia.columna + 1;
+      nuevaFilaPiezaVacia = posicionVacia.fila;
+      break;
+    default:
+      return;
+  }
+
+  if (posicionValida(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia)) {
+    intercambiarPosiciones(
+      posicionVacia.fila,
+      posicionVacia.columna,
+      nuevaFilaPiezaVacia,
+      nuevaColumnaPiezaVacia
+    );
+    actualizarPosicionVacia(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
+  }
+}
+
+function capturarGestos() {
+  var juego = document.getElementById('juego');
+
+  var initialX;
+  var initialY;
+
+  juego.addEventListener('touchstart', function (evento) {
+    initialX = evento.touches[0].clientX;
+    initialY = evento.touches[0].clientY;
+  });
+
+  juego.addEventListener('touchend', function (evento) {
+    var finalX = evento.changedTouches[0].clientX;
+    var finalY = evento.changedTouches[0].clientY;
+
+    var deltaX = finalX - initialX;
+    var deltaY = finalY - initialY;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      if (deltaX > 0) {
+        moverEnDireccionTactil('izquierda');
+      } else {
+        moverEnDireccionTactil('derecha');
+      }
+    } else {
+      if (deltaY > 0) {
+        moverEnDireccionTactil('arriba');
+      } else {
+        moverEnDireccionTactil('abajo');
+      }
+    }
+
+    var gano = chequearSiGano();
+    if (gano) {
+      setTimeout(function () {
+        mostrarCartelGanador();
+      }, 500);
+    }
+    evento.preventDefault();
+  });
+}
+
 function iniciar(){
   mezclarPiezas(60);
   capturarTeclas();
+  capturarGestos();
 }
-
-
 iniciar();
+
