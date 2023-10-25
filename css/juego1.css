@@ -1,0 +1,56 @@
+body {
+  font-family: Arial, sans-serif;
+  width: 940px;
+  margin: 5% auto;
+  min-height: 100%;
+  background-image: url(../images/nivel1/fondo.jpg);
+  background-size: cover;
+}
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+li {
+  padding: 5px 0;
+}
+
+.col-40, .col-60 {
+  display: table-cell;
+  margin: 0;
+  vertical-align: top;
+}
+.col-40 {
+  background: #FFF;
+  padding: 30px;
+  color: #000;
+  background-color: rgb(26, 113, 150);
+}
+
+#juego div {
+
+  text-align: center;
+  animation: fadein 2s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+#juego{
+    width: 600px;
+    height: 600px;
+    background: rgb(26, 113, 150);
+}
+.tabla{
+  float:left;
+  width: 33%;
+  height: 33%;
+}
+.tabla img{
+  width: 100%;
+}
+#instrucciones img{
+  float:left;
+  width: 55%;
+  height: 55%;
+}

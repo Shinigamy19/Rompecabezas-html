@@ -1,0 +1,23 @@
+body{
+  font-family: Arial, sans-serif;
+  margin: 15%;
+  background-image: url(../images/fondo.jpg);
+  background-size: cover;
+}
+#presentacion{
+    width: 50% auto;
+    height: 50% auto;
+    background: rgba(40, 12, 240, 0.76);
+    text-align: center;
+    padding: 5%;
+}
+p{
+  color: white;
+  clear: both;
+}
+#boton{
+  padding: 15px;
+  background-color: white;
+ text-decoration-line: none;
+ color: black;
+}
