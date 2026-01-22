@@ -1,0 +1,145 @@
+/* Responsive adjustments for Rompecabezas */
+
+@media screen and (max-width: 960px) {
+    body {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 10px !important;
+        box-sizing: border-box;
+        min-height: 100vh;
+        background-attachment: fixed;
+        /* Force vertical stacking for all pages on mobile */
+        display: flex !important;
+        flex-direction: column;
+        justify-content: flex-start; /* Start from top, don't center vertically for long content */
+    }
+
+    /* Reset order explicitly to natural DOM order */
+    .col-60 {
+        order: 0;
+    }
+
+    .col-40, .col-60 {
+        display: block !important;
+        width: 100% !important;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+
+    .col-40, .col-60 {
+        padding: 10px !important; /* Menos padding */
+        border-radius: 10px;
+        background-color: rgb(26, 113, 150) !important;
+    }
+
+    .col-40 {
+        margin-bottom: 10px !important; /* Menor margen entre info y juego */
+    }
+
+    #titulo {
+        display: block; /* Volver a block para stacked */
+        margin-bottom: 5px;
+    }
+
+    #titulo h1 {
+        font-size: 1.2rem;
+        margin: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    #titulo h2 {
+        font-size: 1rem;
+        margin: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    #instrucciones {
+        font-size: 0.8rem;
+        text-align: center; 
+    }
+    
+    #instrucciones ol {
+        padding: 0;
+        list-style-type: none !important; /* Quitar puntos para centrar mejor las imagenes */
+        margin: 5px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #instrucciones li {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    #instrucciones img {
+        width: auto !important;
+        max-width: 120px !important; /* Imágenes mucho más chicas */
+        height: auto !important;
+        display: inline-block !important; /* Permitir que estén en línea si entran */
+        margin: 5px;
+        vertical-align: middle;
+    }
+
+    #juego {
+        width: 100% !important;
+        /* Adjust max-width to account for padding if needed, or keep standard */
+        max-width: 100% !important; 
+        /* Reset manual height calc as it's now inside a container */
+        height: auto !important;
+        aspect-ratio: 1 / 1;
+        margin: 0 auto !important;
+        display: block !important;
+        overflow: hidden;
+        border-radius: 8px;
+        /* background-color removed from here as parent has it, or keep for safety */
+    }
+
+    .tabla {
+        width: 33.33% !important;
+        height: 33.33% !important;
+        float: left !important;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .tabla img {
+        display: block;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+    }
+}
+
+/* Presentación (index.html) specifically - TARGETED via class to avoid breaking game pages */
+@media screen and (max-width: 768px) {
+    body.home-page {
+        margin: 0 !important;
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /* Center vertically specifically for the home page */
+    }
+
+    #presentacion {
+        width: 90% !important;
+        margin: 20px auto !important;
+        padding: 30px 15px !important;
+        border-radius: 15px;
+    }
+
+    #presentacion h1 {
+        font-size: 1.8rem;
+    }
+
+    #presentacion p {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+}
